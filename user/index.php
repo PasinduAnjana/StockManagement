@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'user') {
     header("Location: ../login.php");
     exit();
 }
@@ -39,18 +39,15 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
-    <title>Admin Dashboard</title>
+    <title>User Dashboard</title>
 </head>
 
 <body>
     <div class="admin-container">
-        <!-- Navbar inclusion -->
         <?php include('../navbar.php'); ?>
 
-        <!-- Sidebar inclusion -->
         <?php include('sidebar.php'); ?>
 
-        <!-- Main content area -->
         <main class="admin-content">
             <header class="admin-header">
                 <h1>Dashboard</h1>
@@ -70,7 +67,7 @@ mysqli_close($conn);
                     </a>
                     <a href="#" class="card">
                         <img src="../images/clipboard.png" alt="Orders Icon" width="40" class="card-icon">
-                        <p>Orders</p>
+                        <p>My Orders</p>
                         <p style="font-size: 3rem;"><?php echo $order_count; ?></p>
                     </a>
                 </div>

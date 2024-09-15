@@ -6,7 +6,7 @@ include '../db.php';
 $query = "SELECT * FROM products";
 $result = mysqli_query($conn, $query);
 
-$title = "Manage Stock";
+$title = "View Stock";
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ $title = "Manage Stock";
         <div class="admin-content">
             <div class="admin-header">
                 <h1 class="page-title"><?php echo $title; ?></h1>
-                <button class="create-btn" onclick="window.location.href='stock_create.php';">Create Product</button>
+                <button class="create-btn" onclick="window.location.href='stock_order.php';">Order</button>
             </div>
 
 
@@ -64,9 +64,8 @@ $title = "Manage Stock";
                             echo "<td>Rs." . number_format($row['price'], 2) . "</td>";
                             echo "<td>" . $row['quantity'] . "</td>";
                             echo "<td>
-                                <a class='edit-btn' href='stock_edit.php?id=" . $row['id'] . "'>Edit</a> 
+                                <a class='edit-btn' href='stock_order.php?id=" . $row['id'] . "'>Order</a> 
                                 
-                                <a class='delete-btn' href='stock_delete.php?id=" . $row['id'] . "' onclick='return confirm(\"Are you sure?\");'>Delete</a>
                               </td>";
                             echo "</tr>";
                         }

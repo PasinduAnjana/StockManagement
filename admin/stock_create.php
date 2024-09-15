@@ -48,7 +48,7 @@ mysqli_close($conn);
 
 <body>
     <div class="admin-container">
-        <?php include('./navbar.php'); ?>
+        <?php include('../navbar.php'); ?>
         <?php include 'sidebar.php'; ?>
 
         <div class="admin-content">

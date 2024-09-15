@@ -1,5 +1,6 @@
 <?php
 session_start();
+$title = "Manage Stock";
 include '../db.php';
 if (isset($_GET['id'])) {
     $product_id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -78,7 +79,7 @@ mysqli_close($conn);
 
 <body>
     <div class="admin-container">
-        <?php include('./navbar.php'); ?>
+        <?php include('../navbar.php'); ?>
         <?php include 'sidebar.php'; ?>
 
         <div class="admin-content">
