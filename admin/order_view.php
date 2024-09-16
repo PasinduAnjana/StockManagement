@@ -65,6 +65,7 @@ mysqli_close($conn);
                                     <?php
                                     if (!empty($order['image'])) {
                                         echo "<img src='" . $order['image'] . "' alt='Product Image' class='product-image-small'>";
+                                        echo "<img src='" . $order['image'] . "' alt='Product Image' class='product-image-large'>";
                                     } else {
                                         echo "No image";
                                     } ?>

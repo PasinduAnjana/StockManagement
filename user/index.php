@@ -55,17 +55,13 @@ mysqli_close($conn);
             <section>
                 <h2>Summary</h2>
                 <div class="card-container">
-                    <a href="manage_users.php" class="card">
-                        <img src="../images/person.png" alt="Users Icon" width="40" class="card-icon">
-                        <p>Users</p>
-                        <p style="font-size: 3rem;"><?php echo $user_count; ?></p>
-                    </a>
-                    <a href="stock_manage.php" class="card">
+
+                    <a href="stock_view.php" class="card">
                         <img src="../images/packages.png" alt="Products Icon" width="40" class="card-icon">
                         <p>Products</p>
                         <p style="font-size: 3rem;"><?php echo $product_count; ?></p>
                     </a>
-                    <a href="#" class="card">
+                    <a href="order_view.php" class="card">
                         <img src="../images/clipboard.png" alt="Orders Icon" width="40" class="card-icon">
                         <p>My Orders</p>
                         <p style="font-size: 3rem;"><?php echo $order_count; ?></p>

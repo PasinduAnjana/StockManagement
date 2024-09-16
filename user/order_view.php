@@ -7,19 +7,18 @@ if (!isset($_SESSION['id'])) {
     header("Location: ../login.php");
     exit;
 }
+$title = "Orders";
 
 $user_id = $_SESSION['id'];
 $query = "
     SELECT o.id as order_id, p.name as product_name, o.quantity, p.price, o.order_date,p.image
     FROM orders o
     JOIN products p ON o.product_id = p.id
-    WHERE o.user_id = ?
+    WHERE o.user_id = $user_id
     ORDER BY o.order_date DESC
 ";
-$stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, 'i', $user_id);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+
+$result = mysqli_query($conn, $query);
 $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 mysqli_close($conn);

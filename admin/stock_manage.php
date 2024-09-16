@@ -2,6 +2,11 @@
 session_start();
 include '../db.php';
 
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+
 
 $query = "SELECT * FROM products";
 $result = mysqli_query($conn, $query);

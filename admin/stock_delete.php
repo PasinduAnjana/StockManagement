@@ -1,8 +1,13 @@
 <?php
 session_start();
-include '../db.php'; // Include your database connection file
+include '../db.php';
 
-// Check if product ID is passed as a URL parameter
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../login.php");
+    exit();
+}
+
+
 if (isset($_GET['id'])) {
     $product_id = mysqli_real_escape_string($conn, $_GET['id']);
 
@@ -34,5 +39,4 @@ if (isset($_GET['id'])) {
     echo "Invalid product ID.";
 }
 
-// Close the database connection
 mysqli_close($conn);
