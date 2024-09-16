@@ -364,7 +364,7 @@ a{
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     display: none; /* Hidden initially */
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -488,4 +488,96 @@ a{
     background-color: var(--button-hover-bg);
 }
 
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
 
+
+
+
+
+/* product order page */
+
+.product-order-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.product-order-image-large {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-order-image-large img {
+    width: 30vw;
+    max-height: 80vh;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.product-details {
+    flex: 2;
+    padding: 20px;
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.quantity-control button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    width: max-content;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-control input {
+    width: 60px;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.quantity-control button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.order-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.order-btn:hover {
+    background-color: var(--button-hover-bg);
+}
