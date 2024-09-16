@@ -320,6 +320,7 @@ table {
     overflow: hidden; /* Ensure rounded corners appear */
     background-color: var(--primary-bg);
     margin-bottom: 20px;
+    table-layout: fixed;
 }
 
 th, td {
