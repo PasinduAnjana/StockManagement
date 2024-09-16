@@ -2,7 +2,6 @@
 session_start();
 include '../db.php';
 
-
 $query = "SELECT * FROM products";
 $result = mysqli_query($conn, $query);
 
@@ -17,11 +16,9 @@ $title = "View Stock";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="../style.css">
-
 </head>
 
 <body>
-
     <div class="admin-container">
         <?php include('../navbar.php'); ?>
         <?php include 'sidebar.php'; ?>
@@ -29,55 +26,37 @@ $title = "View Stock";
         <div class="admin-content">
             <div class="admin-header">
                 <h1 class="page-title"><?php echo $title; ?></h1>
-                <button class="create-btn" onclick="window.location.href='stock_order.php';">Order</button>
             </div>
 
-
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Product Name</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td>";
-                            if (!empty($row['image'])) {
-                                echo "<img src='" . $row['image'] . "' alt='Product Image' class='product-image-small'>";
-                                echo "<img src='" . $row['image'] . "' alt='Product Image' class='product-image-large'>";
-                            } else {
-                                echo "No image";
-                            }
-                            echo "<td>" . $row['name'] . "</td>";
-                            echo "<td>" . $row['description'] . "</td>";
-                            echo "<td>" . $row['category'] . "</td>";
-                            echo "<td>Rs." . number_format($row['price'], 2) . "</td>";
-                            echo "<td>" . $row['quantity'] . "</td>";
-                            echo "<td>
-                                <a class='edit-btn' href='stock_order.php?id=" . $row['id'] . "'>Order</a> 
-                                
-                              </td>";
-                            echo "</tr>";
+            <div class="products-grid">
+                <?php
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<div class='product-tile'>";
+                        if (!empty($row['image'])) {
+                            echo "<img src='" . $row['image'] . "' alt='Product Image' class='product-image-tile'>";
+                        } else {
+                            echo "<div class='no-image'>No Image</div>";
                         }
-                    } else {
-                        echo "<tr><td colspan='5'>No products found</td></tr>";
+                        echo "<div class='product-details'>";
+                        echo "<div class='badge-container'>";
+                        echo "<h4>" . $row['name'] . "</h4>";
+                        echo "<div class='badge'>" . $row['category'] . "</div>";
+                        echo "</div>";
+
+                        echo "<h3> Rs." . number_format($row['price'], 2) . "</h3>";
+
+                        echo "<button class='order-btn' onclick=\"window.location.href='stock_order.php?id=" . $row['id'] . "'\">Order</button>";
+                        echo "</div>";
+                        echo "</div>";
                     }
-                    ?>
-                </tbody>
-            </table>
+                } else {
+                    echo "<p>No products found</p>";
+                }
+                ?>
+            </div>
         </div>
     </div>
-
 </body>
 
 </html>
