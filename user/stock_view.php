@@ -2,7 +2,12 @@
 session_start();
 include '../db.php';
 
-$query = "SELECT * FROM products";
+$search_query = '';
+if (isset($_POST['search'])) {
+    $search_query = mysqli_real_escape_string($conn, $_POST['search']);
+}
+
+$query = "SELECT * FROM products WHERE name LIKE '%$search_query%' OR category LIKE '%$search_query%'";
 $result = mysqli_query($conn, $query);
 
 $title = "View Stock";
@@ -26,6 +31,11 @@ $title = "View Stock";
         <div class="admin-content">
             <div class="admin-header">
                 <h1 class="page-title"><?php echo $title; ?></h1>
+
+                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="search-form">
+                    <input type="text" name="search" placeholder="Search by name or category" value="<?php echo htmlspecialchars($search_query); ?>">
+                    <button type="submit">Search</button>
+                </form>
             </div>
 
             <div class="products-grid">
