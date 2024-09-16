@@ -2,11 +2,13 @@
 session_start();
 include '../db.php';
 
-// Check if the user is logged in and has admin privileges
+
 if (!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
     echo "You must be an admin to view this page.";
     exit;
 }
+
+$title = "View Orders";
 
 $query = "
     SELECT o.id as order_id, p.name as product_name, o.quantity, p.price, o.order_date, p.image, u.username
