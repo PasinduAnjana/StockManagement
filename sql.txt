@@ -39,7 +39,7 @@ INSERT INTO users (username, password, role) VALUES
 ('ucsc', 'ucsc', 'user');
 
 
-INSERT INTO products(name,description,category,price,quantity,image) 
+INSERT INTO products(name,description,category,quantity,price,image) 
 VALUES
 ('Chair','Wood Chair','Furniture',20,8000.00,'../uploads/chair.jpg'),
 ('Table','Conference Table','Furniture',10,10000.00,'../uploads/table.jpg'),
