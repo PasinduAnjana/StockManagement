@@ -2,17 +2,20 @@
 session_start();
 include '../db.php';
 
+if (!isset($_SESSION['id']) || $_SESSION['role'] != 'user') {
+    header("Location: ../login.php");
+    exit;
+}
+
 if (!isset($_GET['id'])) {
     echo "No product selected.";
     exit;
 }
 
-$product_id = $_GET['id'];
-$query = "SELECT * FROM products WHERE id = ?";
-$stmt = mysqli_prepare($conn, $query);
-mysqli_stmt_bind_param($stmt, 'i', $product_id);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+$product_id = intval($_GET['id']); // Ensure the product_id is an integer
+
+$query = "SELECT * FROM products WHERE id = $product_id";
+$result = mysqli_query($conn, $query);
 $product = mysqli_fetch_assoc($result);
 
 if (!$product) {
@@ -21,24 +24,22 @@ if (!$product) {
 }
 
 $title = "Order Product";
-$order_success = false; // To track if the order was successful
+$order_success = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $quantity = intval($_POST['quantity']);
 
     if ($quantity > 0 && $quantity <= $product['quantity']) {
         $user_id = $_SESSION['id']; // Assuming user_id is stored in session after login
-        $order_query = "INSERT INTO orders (user_id, product_id, quantity, order_date) VALUES (?, ?, ?, NOW())";
-        $order_stmt = mysqli_prepare($conn, $order_query);
-        mysqli_stmt_bind_param($order_stmt, 'iii', $user_id, $product_id, $quantity);
-        mysqli_stmt_execute($order_stmt);
+
+        // Insert order
+        $order_query = "INSERT INTO orders (user_id, product_id, quantity, order_date) VALUES ($user_id, $product_id, $quantity, NOW())";
+        mysqli_query($conn, $order_query);
 
         // Reduce the stock count
         $new_stock = $product['quantity'] - $quantity;
-        $update_stock_query = "UPDATE products SET quantity = ? WHERE id = ?";
-        $update_stock_stmt = mysqli_prepare($conn, $update_stock_query);
-        mysqli_stmt_bind_param($update_stock_stmt, 'ii', $new_stock, $product_id);
-        mysqli_stmt_execute($update_stock_stmt);
+        $update_stock_query = "UPDATE products SET quantity = $new_stock WHERE id = $product_id";
+        mysqli_query($conn, $update_stock_query);
 
         $product['quantity'] = $new_stock; // Update the product quantity in the page
         $order_success = true; // Indicate that the order was successful
@@ -117,8 +118,6 @@ mysqli_close($conn);
                         </div>
                     <?php endif; ?>
                 </div>
-
-
             </div>
         </div>
     </div>
