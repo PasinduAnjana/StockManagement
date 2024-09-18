@@ -26,7 +26,8 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    max-height: 100vh;
+    background-color: var(--navbar-bg);
 }
 
 
@@ -81,11 +82,10 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
     cursor: pointer;
-
-
 }
 
 .logo {
+    margin-left: 10px;
     font-size: 2rem;
     font-weight: bold;
     display: flex;
@@ -94,8 +94,8 @@ body {
 }
 
 .logo img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 .nav-user {
@@ -198,12 +198,60 @@ body {
     background-color: var(--primary-bg);
     border: 1px solid var(--border-color);
     border-radius: 10px;
-    box-shadow: 0 4px 8px var(--shadow-color);
+    box-shadow: 0 10px 20px var(--shadow-color); /* Increased shadow size */
     width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    margin: 100px auto; /* Center the container horizontally */
+    height: 80vh;
+    max-width: 60vw;
+    margin: 10vh auto;
+    display: flex;
+    overflow: hidden;
 }
+
+.login-container img {
+    width: 30vw;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login-form{
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+}
+
+
+.login-form h1 {
+    margin-bottom: 20px;
+    font-size: 3rem;
+    color: var(--primary-text);
+}
+
+.other-options {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.other-options a {
+    font-weight: bold;
+    color: var(--primary-text);
+}
+
+
+.login-form button{
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    font-size: 1.5rem;
+    color: var(--primary-text);
+}
+
 
 h2 {
     text-align: center;
@@ -212,16 +260,13 @@ h2 {
     color: var(--primary-text);
 }
 
-.form-group {
-    margin-bottom: 15px;
-}
 
-label {
+/* label {
     display: block;
     margin-bottom: 5px;
     color: var(--primary-text);
     font-size: 0.9rem;
-}
+} */
 
 input[type="text"],
 input[type="number"],

@@ -49,28 +49,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="login-container">
-        <h2>Login</h2>
+        <div>
+            <img src="images/login.jpg" alt="Logo">
+        </div>
+        <div class="login-form">
+            <h1>Welcome, back!</h1>
 
-        <?php if (!empty($error)) : ?>
-            <p class="error"><?php echo $error; ?></p>
-        <?php endif; ?>
+            <?php if (!empty($error)) : ?>
+                <p class="error"><?php echo $error; ?></p>
+            <?php endif; ?>
 
-        <form action="login.php" method="post">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+            <form action="login.php" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="other-options">
+                <p><a href="guest/">Continue as a Guest</a></p>
+                <p>Don't have an account? <a href="register.php">Register</a></p>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
 
-            <button type="submit">Login</button>
-        </form>
     </div>
-
-
 </body>
 
 </html>

@@ -68,7 +68,7 @@ mysqli_close($conn);
                         <p>Products</p>
                         <p style="font-size: 3rem;"><?php echo $product_count; ?></p>
                     </a>
-                    <a href="#" class="card">
+                    <a href="order_view.php" class="card">
                         <img src="../images/clipboard.png" alt="Orders Icon" width="40" class="card-icon">
                         <p>Orders</p>
                         <p style="font-size: 3rem;"><?php echo $order_count; ?></p>
