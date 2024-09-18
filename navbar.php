@@ -2,6 +2,11 @@
     <!-- <div class="nav-title">
         <div>Stock Management System</div>
     </div> -->
+    <div class="logo">
+        <img src="../images/logo.png" alt="">
+        <span>StockWise</span>
+
+    </div>
 
     <div class="nav-user">
         <div class="profile-pic">
