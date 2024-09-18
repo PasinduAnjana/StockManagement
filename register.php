@@ -11,19 +11,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm-password'];
 
-    // Check if username and passwords are provided
-    if (empty($username) || empty($password) || empty($confirm_password)) {
+    if (!$username || !$password || !$confirm_password) {
         $error = "Please fill all fields.";
     } elseif ($password !== $confirm_password) {
         $error = "Passwords do not match.";
     } else {
-        // Check if the username already exists
-        $sql_check = "SELECT * FROM users WHERE username = '$username'";
-        $result = mysqli_query($conn, $sql_check);
+        $sql = "SELECT * FROM users WHERE username = '$username'";
+        $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $error = "Username already exists.";
         } else {
-            // Insert the new user into the database
             $sql = "INSERT INTO users (username, password, role) VALUES ('$username', '$password', 'user')";
             if (mysqli_query($conn, $sql)) {
                 $success = "Registration successful! You can now <a href='login.php'>log in</a>.";
@@ -99,7 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php endif; ?>
 
 
-            <form action="register.php" method="post" onsubmit="validateForm(event)">
+            <form action="register.php" method="post"
+                onsubmit="validateForm(event)">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username">

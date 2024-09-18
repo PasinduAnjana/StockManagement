@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         $sql = "SELECT * FROM users WHERE username = '$username'";
-
         $result = mysqli_query($conn, $sql);
         $user = mysqli_fetch_assoc($result);
         if ($user && $user['password'] === $password) {
@@ -44,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 
 <body>
@@ -55,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="login-form">
             <h1>Welcome, back!</h1>
 
-            <?php if (!empty($error)) : ?>
+            <?php if ($error) : ?>
                 <p class="error"><?php echo $error; ?></p>
             <?php endif; ?>
 
