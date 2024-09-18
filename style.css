@@ -242,13 +242,13 @@ body {
 
 
 .login-form button{
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .form-group {
     margin-bottom: 15px;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: var(--primary-text);
 }
 
@@ -555,6 +555,12 @@ a{
     border-radius: 6px;
     margin-top: 15px;
     box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.success-message a{
+    color: #155724;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 

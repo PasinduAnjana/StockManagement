@@ -98,20 +98,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p class="success-message"><?php echo $success; ?></p>
             <?php endif; ?>
 
+
             <form action="register.php" method="post" onsubmit="validateForm(event)">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="username" name="username">
                     <p class="error" id="username-error"></p>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password">
                     <p class="error" id="password-error"></p>
                 </div>
                 <div class="form-group">
                     <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <input type="password" id="confirm-password" name="confirm-password">
                     <p class="error" id="confirm-password-error"></p>
                 </div>
                 <button type="submit">Register</button>
