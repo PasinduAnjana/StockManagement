@@ -9,7 +9,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
 }
 
 if (isset($_GET['id'])) {
-    $product_id = mysqli_real_escape_string($conn, $_GET['id']);
+    $product_id = $_GET['id'];
 
     $query = "SELECT * FROM products WHERE id = '$product_id'";
     $result = mysqli_query($conn, $query);
@@ -26,11 +26,11 @@ if (isset($_GET['id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $description = mysqli_real_escape_string($conn, $_POST['description']);
-    $price = mysqli_real_escape_string($conn, $_POST['price']);
-    $quantity = mysqli_real_escape_string($conn, $_POST['quantity']);
-    $category = mysqli_real_escape_string($conn, $_POST['category']);
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $quantity = $_POST['quantity'];
+    $category = $_POST['category'];
 
     if (!empty($_FILES['image']['name'])) {
         $image = $_FILES['image']['name'];
@@ -39,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $image_path = $upload_dir . basename($image);
 
         if (move_uploaded_file($image_tmp, $image_path)) {
-            // Delete the old image if a new one is uploaded
             if (file_exists($product['image'])) {
                 unlink($product['image']);
             }
@@ -48,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
     } else {
-        $image_path = $product['image']; // Keep the old image if not updated
+        $image_path = $product['image'];
     }
 
     // Update the product
@@ -69,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Close the database connection
 mysqli_close($conn);
 ?>
 

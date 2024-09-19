@@ -9,11 +9,11 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = mysqli_real_escape_string($conn, $_POST['name']);
-    $description = mysqli_real_escape_string($conn, $_POST['description']);
-    $price = mysqli_real_escape_string($conn, $_POST['price']);
-    $quantity = mysqli_real_escape_string($conn, $_POST['quantity']);
-    $category = mysqli_real_escape_string($conn, $_POST['category']);
+    $name =  $_POST['name'];
+    $description =  $_POST['description'];
+    $price =  $_POST['price'];
+    $quantity =  $_POST['quantity'];
+    $category =  $_POST['category'];
 
     // Handle file upload
     $image = $_FILES['image']['name'];
@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $image_path = $upload_dir . basename($image);
 
     if (move_uploaded_file($image_tmp, $image_path)) {
-        // Insert product into the database
         $query = "INSERT INTO products (name, description, price, quantity, image, category) 
                   VALUES ('$name', '$description', '$price', '$quantity', '$image_path', '$category')";
 

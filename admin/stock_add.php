@@ -12,7 +12,7 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
-$product_id = intval($_GET['id']); // Ensure the product_id is an integer
+$product_id = $_GET['id'];
 
 $query = "SELECT * FROM products WHERE id = $product_id";
 $result = mysqli_query($conn, $query);
@@ -27,16 +27,16 @@ $title = "Add Product Count";
 $update_success = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $quantity = intval($_POST['quantity']); // The quantity to add
+    $quantity = $_POST['quantity'];
 
     if ($quantity > 0) {
-        // Add stock count
+        // increase quantity
         $new_stock = $product['quantity'] + $quantity;
         $update_stock_query = "UPDATE products SET quantity = $new_stock WHERE id = $product_id";
         mysqli_query($conn, $update_stock_query);
 
-        $product['quantity'] = $new_stock; // Update the product quantity in the page
-        $update_success = true; // Indicate that the stock update was successful
+        $product['quantity'] = $new_stock;
+        $update_success = true;
     } else {
         echo "<p>Invalid quantity. Please enter a valid number.</p>";
     }
@@ -49,8 +49,6 @@ mysqli_close($conn);
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="../style.css">
     <script>
@@ -97,7 +95,7 @@ mysqli_close($conn);
                     <p><strong>Price:</strong> Rs.<?php echo number_format($product['price'], 2); ?></p>
                     <p><strong>Available Quantity:</strong> <?php echo $product['quantity']; ?></p>
 
-                    <!-- Add stock count form -->
+
                     <form action="" method="POST">
                         <div class="quantity-control">
                             <button type="button" onclick="updateQuantity(-1)">-</button>

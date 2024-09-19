@@ -2,7 +2,6 @@
 session_start();
 include '../db.php';
 
-
 if (!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
     echo "You must be an admin to view this page.";
     exit;
@@ -12,12 +11,32 @@ $title = "Manage Users";
 
 $search_query = '';
 if (isset($_POST['search'])) {
-    $search_query = mysqli_real_escape_string($conn, $_POST['search']);
+    $search_query = $_POST['search'];
 }
 
 
 $query = "SELECT * FROM users WHERE username LIKE '%$search_query%' ";
 $result = mysqli_query($conn, $query);
+
+// user count
+$user_query = "SELECT COUNT(*) as count FROM users";
+$user_result = mysqli_query($conn, $user_query);
+$user_count = mysqli_fetch_assoc($user_result)['count'];
+
+//users with orders
+$user_query = "SELECT COUNT(*) as count FROM users WHERE id IN (SELECT user_id FROM orders)";
+$user_result = mysqli_query($conn, $user_query);
+$user_order_count = mysqli_fetch_assoc($user_result)['count'];
+
+//user with highest order count
+$user_query = "SELECT u.id, u.username, COUNT(o.user_id) as order_count
+                FROM users u
+                JOIN orders o ON u.id = o.user_id
+                GROUP BY u.id
+                ORDER BY order_count DESC
+                LIMIT 1";
+$user_result = mysqli_query($conn, $user_query);
+$user_max_orders = mysqli_fetch_assoc($user_result);
 
 mysqli_close($conn);
 ?>
@@ -26,9 +45,7 @@ mysqli_close($conn);
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Orders</title>
+    <title>Manage Users</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -44,31 +61,34 @@ mysqli_close($conn);
                 <a href="#" class="card">
                     <img src="../images/person.png" alt="Users Icon" width="40" class="card-icon">
                     <p>Total Users</p>
-                    <p style="font-size: 3rem;">10</p>
+                    <p style="font-size: 3rem;"><?php echo $user_count; ?></p>
                 </a>
                 <a href="order_view.php" class="card">
                     <img src="../images/packages.png" alt="Products Icon" width="40" class="card-icon">
                     <p>Users with Orders</p>
-                    <p style="font-size: 3rem;">10</p>
+                    <p style="font-size: 3rem;"><?php echo $user_order_count; ?></p>
                 </a>
                 <a href="#" class="card">
                     <img src="../images/clipboard.png" alt="Orders Icon" width="40" class="card-icon">
                     <p>User with the highest order count</p>
-                    <p style="font-size: 3rem;">UCSC</p>
+                    <p style="font-size: 3rem;"><?php echo $user_max_orders['username']; ?></p>
                 </a>
+            </div>
+            <div style="margin-top: 20px;" class="admin-header">
+                <h2 class="page-title">All Users</h2>
+                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="search-form">
+                    <input type="text" name="search" placeholder="Search user" value="<?php echo htmlspecialchars($search_query); ?>">
+                    <button type="submit">Search</button>
+                </form>
             </div>
 
 
-            <h2 class="h2-margi-top">All Users</h2>
 
             <?php if (isset($_GET['message']) && $_GET['message'] == 'success-message') : ?>
                 <p class="success">User deleted successfully!</p>
             <?php endif; ?>
 
-            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="search-form">
-                <input type="text" name="search" placeholder="Search user" value="<?php echo htmlspecialchars($search_query); ?>">
-                <button type="submit">Search</button>
-            </form>
+
 
 
 

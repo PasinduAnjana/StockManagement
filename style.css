@@ -30,8 +30,6 @@ body {
     background-color: var(--navbar-bg);
 }
 
-
-
 /* Admin Container  */
 .admin-container {
     display: grid;

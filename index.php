@@ -63,7 +63,6 @@
 
     <section class="front-section">
         <div class="front-content">
-            <!-- First Pair -->
             <div class="front-item">
                 <div class="front-description">
                     <h2>Track Your Inventory</h2>
@@ -76,7 +75,6 @@
                 </div>
             </div>
 
-            <!-- Second Pair -->
             <div class="front-item">
                 <div class="front-image ">
                     <img class='img2' src="mainimages/orderlist.jpg" alt="Front 2">
@@ -90,7 +88,6 @@
 
             </div>
 
-            <!-- Third Pair -->
             <div class="front-item">
                 <div class="front-description">
                     <h2>Informative Dashboard</h2>
@@ -109,7 +106,6 @@
 
     <footer class="footer">
         <div class="footer-container">
-            <!-- Contact Information -->
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <p><strong>Address:</strong>35, Reid Avenue, Colombo 7 SRI LANKA</p>
@@ -117,7 +113,6 @@
                 <p><strong>Email:</strong> stockwise@gmail.com</p>
             </div>
 
-            <!-- Social Media Links -->
             <div class="footer-section">
                 <h3>Follow Us</h3>
                 <ul>
@@ -128,7 +123,6 @@
                 </ul>
             </div>
 
-            <!-- Useful Links -->
             <div class="footer-section">
                 <h3>Information</h3>
                 <ul>
@@ -140,7 +134,6 @@
             </div>
         </div>
 
-        <!-- Footer Bottom -->
         <div class="footer-bottom">
             <p>&copy; 2024 Your Company Name. All rights reserved.</p>
         </div>

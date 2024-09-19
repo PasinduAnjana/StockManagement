@@ -40,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="style.css">
     <title>Register</title>
     <script>
-        // JavaScript validation for password confirmation, username and password length
         function validateForm(event) {
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
@@ -50,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             var passwordError = document.getElementById("password-error");
             var confirmPasswordError = document.getElementById("confirm-password-error");
 
-            // Clear previous errors
             usernameError.innerHTML = "";
             passwordError.innerHTML = "";
             confirmPasswordError.innerHTML = "";
@@ -116,7 +114,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit">Register</button>
             </form>
             <div class="other-options">
-                <!-- <p><a href="guest/">Continue as a Guest</a></p> -->
                 <div></div>
                 <p>Already have an account? <a href="login.php">Login</a></p>
             </div>

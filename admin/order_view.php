@@ -28,8 +28,6 @@ mysqli_close($conn);
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Orders</title>
     <link rel="stylesheet" href="../style.css">
 </head>
@@ -78,7 +76,6 @@ mysqli_close($conn);
                                 <td>Rs.<?php echo number_format($order['price'], 2); ?></td>
                                 <td>Rs.<?php echo number_format($order['price'] * $order['quantity'], 2); ?></td>
                                 <td><?php echo date('Y-m-d H:i', strtotime($order['order_date'])); ?></td>
-                                <!-- if pending show links tags to approve or reject. else show status -->
                                 <td>
                                     <?php
                                     if ($order['status'] == 'pending') {
