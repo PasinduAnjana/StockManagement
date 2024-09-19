@@ -114,8 +114,8 @@ body {
 }
 
 .profile-image {
-    width: 40px; /* Adjust as needed */
-    height: 40px; /* Adjust as needed */
+    width: 40px; 
+    height: 40px; 
     border-radius: 50%;
     cursor: pointer;
 }
@@ -123,7 +123,7 @@ body {
 .dropdown-menu {
     display: none;
     position: absolute;
-    top: 30px; /* Adjust according to your design */
+    top: 30px; 
     right: 0;
     background-color: var(--navbar-bg);
     box-shadow: 0 4px 8px var(--shadow-color);
@@ -202,7 +202,7 @@ body {
     background-color: var(--primary-bg);
     border: 1px solid var(--border-color);
     border-radius: 10px;
-    box-shadow: 0 10px 20px var(--shadow-color); /* Increased shadow size */
+    box-shadow: 0 10px 20px var(--shadow-color);
     width: 100%;
     height: 80vh;
     max-width: 60vw;
@@ -264,13 +264,6 @@ h2 {
     color: var(--primary-text);
 }
 
-
-/* label {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--primary-text);
-    font-size: 0.9rem;
-} */
 
 input[type="text"],
 input[type="number"],
@@ -345,8 +338,6 @@ select:focus {
     outline: none;
     box-shadow: 0 4px 8px var(--shadow-color);
 }
-
-
 
 button {
     width: 100%;
@@ -427,7 +418,7 @@ a{
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    display: none; /* Hidden initially */
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;

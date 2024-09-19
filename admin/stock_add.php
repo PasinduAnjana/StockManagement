@@ -23,7 +23,7 @@ if (!$product) {
     exit;
 }
 
-$title = "Add Product Count";
+$title = "Add Products to Stock";
 $update_success = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
