@@ -22,6 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
 
+            if ($user['image']) {
+                $_SESSION['image'] = $user['image'];
+            }
+
             if ($_SESSION['role'] == 'admin') {
                 header("Location: admin/index.php");
             } else {
@@ -70,7 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit">Login</button>
             </form>
             <div class="other-options">
-                <p><a href="guest/">Continue as a Guest</a></p>
+                <!-- <p><a href="guest/">Continue as a Guest</a></p> -->
+                <div></div>
                 <p>Don't have an account? <a href="register.php">Register</a></p>
             </div>
         </div>

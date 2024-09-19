@@ -84,6 +84,10 @@ body {
     cursor: pointer;
 }
 
+.navbar a{
+    color: var(--navbar-text);
+}
+
 .logo {
     margin-left: 10px;
     font-size: 2rem;
@@ -121,7 +125,7 @@ body {
 .dropdown-menu {
     display: none;
     position: absolute;
-    top: 50px; /* Adjust according to your design */
+    top: 30px; /* Adjust according to your design */
     right: 0;
     background-color: var(--navbar-bg);
     box-shadow: 0 4px 8px var(--shadow-color);
@@ -141,7 +145,7 @@ body {
 .logout-btn {
     display: block;
     background-color: var(--button-bg);
-    color: var(--button-text);
+    color: var(--button-text) !important;
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -149,6 +153,8 @@ body {
     text-decoration: none;
     transition: background-color 0.3s ease;
 }
+
+
 
 .logout-btn:hover {
     background-color: var(--button-hover-bg);

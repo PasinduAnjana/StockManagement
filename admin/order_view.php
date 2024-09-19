@@ -11,7 +11,7 @@ if (!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
 $title = "View Orders";
 
 $query = "
-    SELECT o.id as order_id, p.name as product_name, o.quantity, p.price, o.order_date, p.image, u.username
+    SELECT o.id as order_id, p.name as product_name, o.quantity,o.status, p.price, o.order_date, p.image, u.username
     FROM orders o
     JOIN products p ON o.product_id = p.id
     JOIN users u ON o.user_id = u.id
@@ -56,6 +56,7 @@ mysqli_close($conn);
                             <th>Item Price</th>
                             <th>Total Price</th>
                             <th>Order Date</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,6 +78,22 @@ mysqli_close($conn);
                                 <td>Rs.<?php echo number_format($order['price'], 2); ?></td>
                                 <td>Rs.<?php echo number_format($order['price'] * $order['quantity'], 2); ?></td>
                                 <td><?php echo date('Y-m-d H:i', strtotime($order['order_date'])); ?></td>
+                                <!-- if pending show links tags to approve or reject. else show status -->
+                                <td>
+                                    <?php
+                                    if ($order['status'] == 'pending') {
+                                        echo "<a class='edit-btn' href='order_status.php?id=" . $order['order_id'] . "&status=approved'>Approve</a>";
+                                        echo "<a class='delete-btn' href='order_status.php?id=" . $order['order_id'] . "&status=rejected'>Reject</a>";
+                                    } else {
+                                        if ($order['status'] == 'approved') {
+                                            echo "<span style='color: green; font-weight: bold;'>Approved</span>";
+                                        } else if ($order['status'] == 'rejected') {
+                                            echo "<span style='color: red;'>Rejected</span>";
+                                        }
+                                    }
+                                    ?>
+                                </td>
+
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

@@ -116,7 +116,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit">Register</button>
             </form>
             <div class="other-options">
-                <p><a href="guest/">Continue as a Guest</a></p>
+                <!-- <p><a href="guest/">Continue as a Guest</a></p> -->
+                <div></div>
                 <p>Already have an account? <a href="login.php">Login</a></p>
             </div>
         </div>

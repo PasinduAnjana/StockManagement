@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #111;
     padding: 1rem;
     color: white;
 }
@@ -22,13 +22,24 @@ nav {
 }
 
 nav .logo {
-    font-size: 1.5rem;
+    margin-left: 10px;
+    font-size: 1.8rem;
     font-weight: bold;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+nav .logo img {
+    width: 30px;
+    height: 30px;
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    margin-right: 10px;
+    align-items: center;
 }
 
 nav ul li {
@@ -46,8 +57,9 @@ nav ul li a {
     display: inline-block;
     margin-top: 1.5rem;
     padding: 0.75rem 1.5rem;
-    background-color: #333;
-    color: white;
+    background-color: white;
+    color: black;
+    font-weight: bold;
     text-decoration: none;
     border-radius: 5px;
 }
@@ -136,22 +148,34 @@ footer {
 }
 /* Hero Section */
 .hero {
-    background: #5d9cec;
-    color: white;
-    padding: 3rem 1rem;
+    position: relative;
+    height: 50vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    text-align: left;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .hero-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    text-align: left;
     width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+    z-index: 1;
 }
 
 .hero-text {
@@ -160,7 +184,7 @@ footer {
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 
 .hero p {
@@ -245,7 +269,8 @@ footer {
 
 
 .cta-button:hover {
-    background-color: #555;
+    background-color: #111;
+    color: #fff;
 }
 
 .front-image {
@@ -358,5 +383,67 @@ footer {
     .footer-section .social-icon {
         margin: 0.5rem;
     }
+}
+
+
+
+
+/* user area */
+.nav-user {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.profile-pic {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-image {
+    width: 40px;
+    height: 40px; 
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #222;
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1000;
+    width: fit-content;
+    justify-content: end;
+}
+
+
+.dropdown-menu .username {
+    /* display: block; */
+    margin-bottom: 10px;
+    margin-left: auto;
+
+}
+
+
+.profile-pic:hover .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.logout-btn {
+    display: block;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
