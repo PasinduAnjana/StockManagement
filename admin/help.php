@@ -53,8 +53,8 @@ $title = "Help";
                 </div>
 
                 <div class="help-card">
-                    <h3 class="help-title">View Orders</h3>
-                    <p>To view orders, click on the "View Orders" tab in the sidebar.
+                    <h3 class="help-title">Manage Orders</h3>
+                    <p>To view all orders, click on the "View Orders" tab in the sidebar.
                         You will see a list of all orders and the status of each order.
                         You can approve or reject the order.
                 </div>
