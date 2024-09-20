@@ -6,7 +6,9 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    role VARCHAR(20) NOT NULL
+    role VARCHAR(20) NOT NULL.
+    image VARCHAR(255),
+    contact VARCHAR(10),
 );
 
 CREATE TABLE products (
@@ -24,6 +26,7 @@ CREATE TABLE orders (
     user_id INT NOT NULL,
     product_id INT NOT NULL,
     quantity INT NOT NULL,
+    status VARCHAR(10) NOT NULL DEFAULT 'pending',
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
