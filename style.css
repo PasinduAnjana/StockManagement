@@ -672,3 +672,23 @@ a{
 .search-form button[type="submit"] {
     width: fit-content;
 }
+
+
+/* help page */
+
+.help-card{
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.help-card:hover{
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.help-card h3{
+    color: var(--primary-text);
+}
