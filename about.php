@@ -48,59 +48,28 @@
         </nav>
     </header>
 
-    <section class="hero">
-        <img src="mainimages/main.jpg" alt="Stock Management" class="hero-bg">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Manage Your Inventory with Us!</h1>
-                <p style="width:70%">Best software for businesses to manage inventory, place orders, and keep track of your stocks.</p>
-                <a href="login.php" class="cta-button">Get Started</a>
-            </div>
-        </div>
-    </section>
+    <main>
+        <section class="about-us-section">
+            <div class="about-container">
 
 
-    <section class="front-section">
-        <div class="front-content">
-            <div class="front-item">
-                <div class="front-description">
-                    <h2>Track Your Inventory</h2>
-                    <p>
-                        Easily track your inventory with real time data updates, ensuring you know what is in stock and what needs restocking.
-                    </p>
+                <h1>About Us</h1>
+                <div class="about-logo">
+                    <img src="images/logo.png" alt="">
+                    <span>StockWise</span>
                 </div>
-                <div class="front-image ">
-                    <img class='img1' src="mainimages/inventory.jpg" alt="Front 1">
-                </div>
-            </div>
-
-            <div class="front-item">
-                <div class="front-image ">
-                    <img class='img2' src="mainimages/orderlist.jpg" alt="Front 2">
-                </div>
-                <div class="front-description">
-                    <h2>Manage Orders Efficiently</h2>
-                    <p>
-                        Manage your orders efficiently, with easy to use features that help streamline your workflow.
-                    </p>
-                </div>
+                <p>
+                    <span style="font-weight: bold;">StockWise </span>is a cutting-edge stock management system designed to simplify inventory management for businesses of all sizes.
+                    With an intuitive interface and real-time tracking, StockWise helps you stay on top of your stock levels, orders, and users effortlessly.
+                </p>
+                <p>
+                    Our goal is to provide a reliable, user-friendly solution that boosts efficiency, reduces costs, and optimizes the overall inventory workflow.
+                    Whether you're managing a small store or a large warehouse, StockWise adapts to your needs.
+                </p>
 
             </div>
-
-            <div class="front-item">
-                <div class="front-description">
-                    <h2>Informative Dashboard</h2>
-                    <p>
-                        With our user-friendly interface and dynamic features, the Dashboard ensures you stay informed and in control of your stock management process.
-                    </p>
-                </div>
-                <div class="front-image">
-                    <img class='img1' src="mainimages/dashboard.jpg" alt="Front 3">
-                </div>
-            </div>
-        </div>
-    </section>
-
+        </section>
+    </main>
 
 
     <footer class="footer">

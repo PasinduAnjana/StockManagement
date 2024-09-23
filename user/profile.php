@@ -3,16 +3,14 @@ session_start();
 $title = "My Profile";
 include '../db.php';
 
-// Redirect if not logged in
 if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'user') {
     header("Location: ../login.php");
     exit();
 }
 
-// Fetch the logged-in user's information
-$user_id = $_SESSION['id']; // Assuming you have stored user ID in session
+$user_id = $_SESSION['id'];
 
-// Fetch user data
+
 $query = "SELECT * FROM users WHERE id = '$user_id'";
 $result = mysqli_query($conn, $query);
 
@@ -23,7 +21,7 @@ if (mysqli_num_rows($result) > 0) {
     exit();
 }
 
-// Update user if form is submitted
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $contact = $_POST['contact'];
@@ -37,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $image_path = $upload_dir . basename($image);
 
         if (move_uploaded_file($image_tmp, $image_path)) {
-            // Delete old image if new one is uploaded
             if (!empty($user['image']) && file_exists($user['image'])) {
                 unlink($user['image']);
             }
@@ -83,8 +80,6 @@ mysqli_close($conn);
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
     <link rel="stylesheet" href="../style.css">
 </head>
