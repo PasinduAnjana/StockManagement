@@ -11,7 +11,7 @@ $title = "Orders";
 
 $user_id = $_SESSION['id'];
 $query = "
-    SELECT o.id as order_id, p.name as product_name, o.quantity, p.price, o.order_date,p.image
+    SELECT o.id as order_id, p.name as product_name, o.quantity, p.price, o.order_date,p.image,o.status
     FROM orders o
     JOIN products p ON o.product_id = p.id
     WHERE o.user_id = $user_id
@@ -53,6 +53,7 @@ mysqli_close($conn);
                             <th>Item Price</th>
                             <th>Total Price</th>
                             <th>Order Date</th>
+                            <th>Order Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,12 +69,23 @@ mysqli_close($conn);
                                     } ?>
                                 </td>
                                 <td><?php echo $order['order_id']; ?></td>
-
                                 <td><?php echo $order['product_name']; ?></td>
                                 <td><?php echo $order['quantity']; ?></td>
                                 <td>Rs.<?php echo number_format($order['price'], 2); ?></td>
                                 <td>Rs.<?php echo number_format($order['price'] * $order['quantity'], 2); ?></td>
                                 <td><?php echo date('Y-m-d H:i', strtotime($order['order_date'])); ?></td>
+                                <td>
+                                    <?php
+                                    if ($order['status'] == 'approved') {
+                                        echo "<span style='color: green;'>" . $order['status'] . "</span>";
+                                    } elseif ($order['status'] == 'rejected') {
+                                        echo "<span style='color: red;'>" . $order['status'] . "</span>";
+                                    } else {
+                                        echo $order['status'];
+                                    }
+                                    ?>
+                                </td>
+
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

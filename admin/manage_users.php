@@ -66,12 +66,20 @@ mysqli_close($conn);
                 <a href="order_view.php" class="card">
                     <img src="../images/packages.png" alt="Products Icon" width="40" class="card-icon">
                     <p>Users with Orders</p>
-                    <p style="font-size: 3rem;"><?php echo $user_order_count; ?></p>
+                    <p style="font-size: 3rem;"><?php echo $user_order_count  ?></p>
                 </a>
                 <a href="#" class="card">
                     <img src="../images/clipboard.png" alt="Orders Icon" width="40" class="card-icon">
                     <p>User with the highest order count</p>
-                    <p style="font-size: 3rem;"><?php echo $user_max_orders['username']; ?></p>
+                    <p style="font-size: 3rem;">
+                        <?php
+                        if ($user_max_orders && $user_max_orders['order_count'] > 0) {
+                            echo $user_max_orders['username'];
+                        } else {
+                            echo "No orders yet";
+                        }
+                        ?>
+                    </p>
                 </a>
             </div>
             <div style="margin-top: 20px;" class="admin-header">

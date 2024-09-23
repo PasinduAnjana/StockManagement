@@ -12,6 +12,8 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
+$title = "View Stock";
+
 $product_id = intval($_GET['id']); // Ensure the product_id is an integer
 
 $query = "SELECT * FROM products WHERE id = $product_id";
@@ -23,7 +25,6 @@ if (!$product) {
     exit;
 }
 
-$title = "Order Product";
 $order_success = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
