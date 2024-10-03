@@ -18,7 +18,6 @@ if (isset($_POST['search'])) {
 $query = "SELECT * FROM users WHERE username LIKE '%$search_query%' ";
 $result = mysqli_query($conn, $query);
 
-// user count
 $user_query = "SELECT COUNT(*) as count FROM users";
 $user_result = mysqli_query($conn, $user_query);
 $user_count = mysqli_fetch_assoc($user_result)['count'];
