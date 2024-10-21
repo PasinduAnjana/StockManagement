@@ -8,7 +8,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
 }
 
 if (isset($_GET['id'])) {
-    $user_id = mysqli_real_escape_string($conn, $_GET['id']);
+    $user_id = $_GET['id'];
 
     $delete_orders_query = "DELETE FROM orders WHERE user_id = $user_id";
     $result_orders = mysqli_query($conn, $delete_orders_query);
