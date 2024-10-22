@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
             unlink($image_path);
         }
 
-        $delete_query = "DELETE FROM products WHERE id = '$product_id'";
+        $delete_query = "DELETE FROM products WHERE id = '$product_id' ";
         if (mysqli_query($conn, $delete_query)) {
             header('Location: stock_manage.php');
             exit();
