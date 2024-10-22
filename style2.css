@@ -207,21 +207,7 @@ footer {
     border-radius: 10px;
 }
 
-/* For smaller screens */
-@media (max-width: 768px) {
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-    }
 
-    .hero-text {
-        padding-right: 0;
-    }
-
-    .hero-image {
-        margin-top: 2rem;
-    }
-}
 
 /* Front Section */
 .front-section {
@@ -293,22 +279,7 @@ footer {
     box-shadow: 6px 0px 6px  rgba(53, 54, 54, 0.137);
 }
 
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-    .front-item {
-        flex-direction: column;
-        text-align: center;
-    }
 
-    .front-image {
-        max-width: 100%;
-        margin-top: 1.5rem;
-    }
-
-    .front-description {
-        padding-left: 0;
-    }
-}
 
 /* Footer Styling */
 .footer {

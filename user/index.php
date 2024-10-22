@@ -11,10 +11,7 @@ $title = "Home";
 // Database connection
 include '../db.php';
 
-// Fetch users count
-$user_query = "SELECT COUNT(*) as count FROM users";
-$user_result = mysqli_query($conn, $user_query);
-$user_count = mysqli_fetch_assoc($user_result)['count'];
+
 
 // Fetch products count
 $product_query = "SELECT COUNT(*) as count FROM products";

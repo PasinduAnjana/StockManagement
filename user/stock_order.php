@@ -6,7 +6,7 @@ if (!isset($_SESSION['id']) || $_SESSION['role'] != 'user') {
     header("Location: ../login.php");
     exit;
 }
-
+//
 if (!isset($_GET['id'])) {
     echo "No product selected.";
     exit;
