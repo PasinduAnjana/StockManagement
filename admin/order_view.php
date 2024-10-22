@@ -2,7 +2,6 @@
 session_start();
 include '../db.php';
 
-
 if (!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
     echo "You must be an admin to view this page.";
     exit;
@@ -11,7 +10,7 @@ if (!isset($_SESSION['id']) || $_SESSION['role'] != 'admin') {
 $title = "View Orders";
 
 $query = "
-    SELECT o.id as order_id, p.name as product_name, o.quantity,o.status, p.price, o.order_date, p.image, u.username
+    SELECT o.id as order_id, p.name as product_name, o.quantity, o.status, p.price, o.order_date, p.image, u.username
     FROM orders o
     JOIN products p ON o.product_id = p.id
     JOIN users u ON o.user_id = u.id
@@ -19,8 +18,6 @@ $query = "
 ";
 
 $result = mysqli_query($conn, $query);
-$orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
 mysqli_close($conn);
 ?>
 
@@ -40,7 +37,7 @@ mysqli_close($conn);
         <div class="admin-content">
             <h1 class="page-title">All Orders</h1>
 
-            <?php if (empty($orders)): ?>
+            <?php if (mysqli_num_rows($result) == 0): ?>
                 <p>No orders available.</p>
             <?php else: ?>
                 <table>
@@ -58,7 +55,7 @@ mysqli_close($conn);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($orders as $order): ?>
+                        <?php while ($order = mysqli_fetch_assoc($result)): ?>
                             <tr>
                                 <td>
                                     <?php
@@ -90,9 +87,8 @@ mysqli_close($conn);
                                     }
                                     ?>
                                 </td>
-
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endwhile; ?>
                     </tbody>
                 </table>
             <?php endif; ?>

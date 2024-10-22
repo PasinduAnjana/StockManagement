@@ -9,7 +9,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
 
 $search_query = '';
 if (isset($_POST['search'])) {
-    $search_query = mysqli_real_escape_string($conn, $_POST['search']);
+    $search_query = $_POST['search'];
 }
 
 
